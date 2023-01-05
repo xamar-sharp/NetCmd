@@ -30,6 +30,14 @@ namespace NetCmd.Infrastructure
             }
             return this;
         }
+        public IEntry GetEntry(string entryName)
+        {
+            return _entries.FirstOrDefault(e => e.CommandName == entryName);
+        }
+        public IList<IEntry> GetAllEntries()
+        {
+            return _entries;
+        }
         public IStartup Build()
         {
             return new Startup(this, _entries);

@@ -26,6 +26,7 @@ namespace NetCmd.Defaults
         private readonly IProgresser _progresser;
         public int ParameterCount { get; set; } = 1;
         public string CommandName { get; set; } = "remote-pack";
+        public string HelpText { get; set; } = "remote-pack is command for dynamically load commands!\nIt has 1 parameters:\n1 - URI for such command-model as \n{'CommandName':'remote-command','ParameterCount':2,'AssemblyData':'Binary data for dll with command-class. He must contains [void React(string[] params)] method!'}\n'}";
         public void React(string[] args)
         {
             Print("Welcome to the NetCmd Installer module!");

@@ -41,7 +41,7 @@ namespace NetCmd.Defaults
                           "|    NNNNNNNN   NNNNN     EEEEE                  TTTTTT          |\n" +
                           "|    NNNNNNN    NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
                           "|    NNNNNN     NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n";
-            Print(icon + "\nWelcome to NetCmd! NetCmd is simple-dynamic CLI for your life ^_^!\n");
+            Print(icon + "\nWelcome to NetCmd! NetCmd is simple-dynamic CLI for your life ^_^!\nEnter if you newer: help $all\n");
             while (true)
             {
                 try
@@ -92,7 +92,14 @@ namespace NetCmd.Defaults
                         paramsRaw = parameters.Split(" $").Skip(1).Take(command.ParameterCount + 1).ToArray();
                         new Thread((obj) =>
                         {
-                            command.React(obj as string[]);
+                            try
+                            {
+                                command.React(obj as string[]);
+                            }
+                            catch(Exception ex)
+                            {
+                                this.ReportError("Syntax error.");
+                            }
                         }).Start(paramsRaw);
                         CurrentCommand = command.CommandName;
                         Console.WriteLine();

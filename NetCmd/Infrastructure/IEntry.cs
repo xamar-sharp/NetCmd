@@ -10,6 +10,7 @@ namespace NetCmd.Infrastructure
     {
         public int ParameterCount { get; }
         public string CommandName { get; }
+        public string HelpText { get; }
         public void React(string[] paramsRaw);
     }
 }
