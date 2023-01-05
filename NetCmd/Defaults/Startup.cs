@@ -30,7 +30,18 @@ namespace NetCmd.Defaults
         }
         public void Run()
         {
-            Print("Welcome to NetCmd! NetCmd is simple-dynamic CLI for your life ^_^!");
+            Console.Title = "NetCmd - CLI for your life!";
+            string icon = "|    NNNNN      NNNNN     EEEEEEEEEEEEE    TTTTTTTTTTTTTTTTTT    |\n" +
+                          "|    NNNNN    NNNNNNN     EEEEEEEEEEEEE    TTTTTTTTTTTTTTTTTT    |\n" +
+                          "|    NNNNN   NNNNNNNN     EEEEE                  TTTTTT          |\n" +
+                          "|    NNNNN  NNNNNNNNN     EEEEE                  TTTTTT          |\n" +
+                          "|    NNNNN NNNNNNNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
+                          "|    NNNNNNNNNN NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
+                          "|    NNNNNNNNN  NNNNN     EEEEE                  TTTTTT          |\n" +
+                          "|    NNNNNNNN   NNNNN     EEEEE                  TTTTTT          |\n" +
+                          "|    NNNNNNN    NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
+                          "|    NNNNNN     NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n";
+            Print(icon + "\nWelcome to NetCmd! NetCmd is simple-dynamic CLI for your life ^_^!\n");
             while (true)
             {
                 try
