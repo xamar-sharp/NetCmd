@@ -12,11 +12,9 @@ namespace NetCmd.Infrastructure
     internal class EntryBuilder
     {
         private readonly IList<IEntry> _entries;
-        private readonly HttpClient _client;
         public EntryBuilder()
         {
             _entries = new List<IEntry>(4);
-            _client = new HttpClient(new SocketsHttpHandler() { AutomaticDecompression = DecompressionMethods.All }) { Timeout = TimeSpan.FromSeconds(300) };
         }
         public EntryBuilder AddCommand(IEntry entry)
         {
@@ -31,10 +29,6 @@ namespace NetCmd.Infrastructure
                 AddCommand(entries[x]);
             }
             return this;
-        }
-        public async Task DownloadCommandAsync(string url)
-        {
-            _entries.Add(JsonConvert.DeserializeObject<IEntry>(await _client.GetStringAsync(url)));
         }
         public IStartup Build()
         {
