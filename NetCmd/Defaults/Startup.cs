@@ -16,7 +16,7 @@ namespace NetCmd.Defaults
         public EntryBuilder Builder { get; }
         public double CurrentProgress { get; set; }
         public string CurrentCommand { get; set; }
-        private IDictionary<string, KeyValuePair<int,KeyValuePair<object, MethodInfo>>> _externalCommandsCache;
+        private IDictionary<string, KeyValuePair<int, KeyValuePair<object, MethodInfo>>> _externalCommandsCache;
         private readonly AssemblyLoadContext _ctx;
         public Startup(EntryBuilder builder, IList<IEntry> entries)
         {
@@ -26,7 +26,7 @@ namespace NetCmd.Defaults
             CurrentProgress = 0;
             _commands = entries;
             _ctx = new AssemblyLoadContext("Module_Loader", false);
-            _externalCommandsCache = new Dictionary<string, KeyValuePair<int,KeyValuePair<object, MethodInfo>>>(4);
+            _externalCommandsCache = new Dictionary<string, KeyValuePair<int, KeyValuePair<object, MethodInfo>>>(4);
         }
         public void Run()
         {
@@ -47,14 +47,22 @@ namespace NetCmd.Defaults
                 try
                 {
                     string rawText = Console.ReadLine();
-                    int lastIndex = rawText.IndexOf(" ");
+                    int lastIndex;
+                    if (!rawText.Contains(" "))
+                    {
+                        lastIndex = rawText.Length;
+                    }
+                    else
+                    {
+                        lastIndex = rawText.IndexOf(" ");
+                    }
                     string cmdName = rawText.Substring(0, lastIndex);
                     IEntry command = _commands.FirstOrDefault(ent => ent.CommandName == cmdName);
                     var parameters = rawText.Substring(lastIndex);
                     string[] paramsRaw;
                     if (command is null)
                     {
-                        if (_externalCommandsCache.TryGetValue(cmdName, out KeyValuePair<int,KeyValuePair<object, MethodInfo>> data))
+                        if (_externalCommandsCache.TryGetValue(cmdName, out KeyValuePair<int, KeyValuePair<object, MethodInfo>> data))
                         {
                             paramsRaw = parameters.Split(" $").Skip(1).Take(data.Key).ToArray();
                             CurrentCommand = cmdName;
@@ -77,7 +85,7 @@ namespace NetCmd.Defaults
                                 Type moduleType = asm.GetType(asm.GetName().Name + "." + KebabToPascalCase(cmdName) + "Entry");
                                 object moduleInst = Activator.CreateInstance(moduleType);
                                 MethodInfo external = moduleType.GetMethod("React", BindingFlags.Public | BindingFlags.Instance);
-                                _externalCommandsCache.Add(cmdName, new KeyValuePair<int,KeyValuePair<object,MethodInfo>>(paramCount,new KeyValuePair<object, MethodInfo>(moduleInst, external)));
+                                _externalCommandsCache.Add(cmdName, new KeyValuePair<int, KeyValuePair<object, MethodInfo>>(paramCount, new KeyValuePair<object, MethodInfo>(moduleInst, external)));
                                 CurrentCommand = cmdName;
                                 Console.WriteLine();
                                 external.Invoke(moduleInst, new object[] { paramsRaw });
@@ -96,12 +104,15 @@ namespace NetCmd.Defaults
                             {
                                 command.React(obj as string[]);
                             }
-                            catch(Exception ex)
+                            catch (Exception ex)
                             {
                                 this.ReportError("Syntax error.");
                             }
                         }).Start(paramsRaw);
-                        CurrentCommand = command.CommandName;
+                        if (command.CommandName is not "state" and not "help")
+                        {
+                            CurrentCommand = command.CommandName;
+                        }
                         Console.WriteLine();
                     }
                 }

@@ -13,7 +13,8 @@ namespace NetCmd.Defaults
         public NeToolsPackage()
         {
             _networkTools = new List<IEntry>(4);
-            this.WithEntry(new DnsEntry()).WithEntry(new InstallEntry()).WithEntry(new HelpEntry());
+            this.WithEntry(new DnsEntry()).WithEntry(new InstallEntry()).WithEntry(new HelpEntry()).WithEntry(new HttpEntry()).WithEntry(new StateEntry()).WithEntry(new LoaderEntry())
+                .WithEntry(new DeadEntry());
         }
         public IEntryPackage WithEntry(IEntry entry)
         {
