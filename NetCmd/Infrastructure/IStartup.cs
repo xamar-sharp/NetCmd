@@ -9,6 +9,7 @@ namespace NetCmd.Infrastructure
     internal interface IStartup : IUIMessager
     {
         static IStartup Current { get; internal set; }
+        string CurrentDirectory { get; set; }
         double CurrentProgress { get; set; }
         string CurrentCommand { get; set; }
         EntryBuilder Builder { get; }

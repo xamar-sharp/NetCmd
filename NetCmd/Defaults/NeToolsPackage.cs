@@ -13,8 +13,9 @@ namespace NetCmd.Defaults
         public NeToolsPackage()
         {
             _networkTools = new List<IEntry>(4);
-            this.WithEntry(new DnsEntry()).WithEntry(new InstallEntry()).WithEntry(new HelpEntry()).WithEntry(new HttpEntry()).WithEntry(new StateEntry()).WithEntry(new LoaderEntry())
-                .WithEntry(new DeadEntry());
+            this.WithEntry(new DnsEntry()).WithEntry(new InstallEntry()).WithEntry(new HelpEntry()).WithEntry(new HttpEntry())
+                .WithEntry(new StateEntry()).WithEntry(new LoaderEntry()).WithEntry(new ProcessStartEntry())
+                .WithEntry(new DeadEntry()).WithEntry(new ReaderEntry()).WithEntry(new DirectoryIteratorEntry());
         }
         public IEntryPackage WithEntry(IEntry entry)
         {

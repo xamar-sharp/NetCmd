@@ -14,6 +14,7 @@ namespace NetCmd.Defaults
     {
         private readonly IList<IEntry> _commands;
         public EntryBuilder Builder { get; }
+        public string CurrentDirectory { get; set; }
         public double CurrentProgress { get; set; }
         public string CurrentCommand { get; set; }
         private IDictionary<string, KeyValuePair<int, KeyValuePair<object, MethodInfo>>> _externalCommandsCache;
@@ -22,11 +23,16 @@ namespace NetCmd.Defaults
         {
             IStartup.Current = this;
             Builder = builder;
+            CurrentDirectory = SelectFirstDrivePath();
             CurrentCommand = "none";
             CurrentProgress = 0;
             _commands = entries;
             _ctx = new AssemblyLoadContext("Module_Loader", false);
             _externalCommandsCache = new Dictionary<string, KeyValuePair<int, KeyValuePair<object, MethodInfo>>>(4);
+        }
+        public string SelectFirstDrivePath()
+        {
+            return DriveInfo.GetDrives().First().RootDirectory.FullName;
         }
         public void Run()
         {
@@ -44,6 +50,7 @@ namespace NetCmd.Defaults
             Print(icon + "\nWelcome to NetCmd! NetCmd is simple-dynamic CLI for your life ^_^!\nEnter if you newer: help $all\n");
             while (true)
             {
+                Console.Write(CurrentDirectory + " ");
                 try
                 {
                     string rawText = Console.ReadLine();
