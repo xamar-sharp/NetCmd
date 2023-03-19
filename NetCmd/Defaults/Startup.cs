@@ -37,16 +37,16 @@ namespace NetCmd.Defaults
         public void Run()
         {
             Console.Title = "NetCmd - CLI for your life!";
-            string icon = "|    NNNNN      NNNNN     EEEEEEEEEEEEE    TTTTTTTTTTTTTTTTTT    |\n" +
-                          "|    NNNNN    NNNNNNN     EEEEEEEEEEEEE    TTTTTTTTTTTTTTTTTT    |\n" +
-                          "|    NNNNN   NNNNNNNN     EEEEE                  TTTTTT          |\n" +
-                          "|    NNNNN  NNNNNNNNN     EEEEE                  TTTTTT          |\n" +
-                          "|    NNNNN NNNNNNNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
-                          "|    NNNNNNNNNN NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
-                          "|    NNNNNNNNN  NNNNN     EEEEE                  TTTTTT          |\n" +
-                          "|    NNNNNNNN   NNNNN     EEEEE                  TTTTTT          |\n" +
-                          "|    NNNNNNN    NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
-                          "|    NNNNNN     NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n";
+            string icon = "| /|\\  NNNNN      NNNNN     EEEEEEEEEEEEE    TTTTTTTTTTTTTTTTTT    |\n" +
+                          "| ---  NNNNN    NNNNNNN     EEEEEEEEEEEEE    TTTTTTTTTTTTTTTTTT    |\n" +
+                          "| |||  NNNNN   NNNNNNNN     EEEEE                  TTTTTT          |\n" +
+                          "| ---  NNNNN  NNNNNNNNN     EEEEE                  TTTTTT          |\n" +
+                          "| |||  NNNNN NNNNNNNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
+                          "| ||| NNNNNNNNNN NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
+                          "| ---  NNNNNNNNN  NNNNN     EEEEE                  TTTTTT          |\n" +
+                          "| |||  NNNNNNNN   NNNNN     EEEEE                  TTTTTT          |\n" +
+                          "| ---  NNNNNNN    NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
+                          "| \\|/  NNNNNN     NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n";
             Print(icon + "\nWelcome to NetCmd! NetCmd is simple-dynamic CLI for your life ^_^!\nEnter if you newer: help $all\n");
             while (true)
             {
@@ -54,6 +54,11 @@ namespace NetCmd.Defaults
                 try
                 {
                     string rawText = Console.ReadLine();
+                    if(rawText == "clear")
+                    {
+                        Console.Clear();
+                        continue;
+                    }
                     int lastIndex;
                     if (!rawText.Contains(" "))
                     {
@@ -116,7 +121,7 @@ namespace NetCmd.Defaults
                                 this.ReportError("Syntax error.");
                             }
                         }).Start(paramsRaw);
-                        if (command.CommandName is not "state" and not "help")
+                        if (command.CommandName is not "state" and not "help" and not "clear")
                         {
                             CurrentCommand = command.CommandName;
                         }
