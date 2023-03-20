@@ -42,7 +42,7 @@ namespace NetCmd.Defaults
                           "| |||  NNNNN   NNNNNNNN     EEEEE                  TTTTTT          |\n" +
                           "| ---  NNNNN  NNNNNNNNN     EEEEE                  TTTTTT          |\n" +
                           "| |||  NNNNN NNNNNNNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
-                          "| ||| NNNNNNNNNN NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
+                          "| |||  NNNNNNNNNN NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +
                           "| ---  NNNNNNNNN  NNNNN     EEEEE                  TTTTTT          |\n" +
                           "| |||  NNNNNNNN   NNNNN     EEEEE                  TTTTTT          |\n" +
                           "| ---  NNNNNNN    NNNNN     EEEEEEEEEEEEE          TTTTTT          |\n" +

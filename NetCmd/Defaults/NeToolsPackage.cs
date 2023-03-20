@@ -17,7 +17,7 @@ namespace NetCmd.Defaults
                 WithEntry(new HttpEntry()).WithEntry(new StateEntry()).WithEntry(new LoaderEntry()).
                 WithEntry(new ProcessStartEntry()).WithEntry(new DeadEntry()).WithEntry(new ReaderEntry()).
                 WithEntry(new DirectoryIteratorEntry()).WithEntry(new DriveEntry()).WithEntry(new SpeechEntry()).
-                WithEntry(new ConsoleEntry());
+                WithEntry(new ConsoleEntry()).WithEntry(new AscIIDrawEntry());
         }
         public IEntryPackage WithEntry(IEntry entry)
         {
