@@ -11,8 +11,9 @@ namespace NetCmd.Defaults
     internal sealed class AscIIDrawEntry : IEntry
     {
         public string CommandName { get; } = "draw";
-        public string HelpText { get; } = "Draw ASC-II art to console, based on special markup syntax.\nIt has 2 parameters:\n 1 - text or relative file name for draw-output\n 2 - F(if 1 parameter is file name), Other if text.";
-        public int ParameterCount { get; } = 2; 
+        public string HelpText { get; } = "Draw ASC-II art to console, based on special markup syntax.\nIt has 2 parameters:\n 1 - text or relative file name(without extension!)(extension should be .ascdraw!) for draw-output\n 2 - F(if 1 parameter is file name), Other if text.\n 3 - If 1 parameter is text, this is file name to load picture into filesystem.\n File name without extension! Maybe _ if don`t used!";
+        public int ParameterCount { get; } = 3;
+        public ConsoleColor HelpColor { get; } = ConsoleColor.DarkCyan;
         private readonly AscIIDrawer _drawer = new AscIIDrawer();
         public void React(string[] args)
         {
@@ -21,17 +22,16 @@ namespace NetCmd.Defaults
                 Console.WriteLine();
                 if (args[1] == "F")
                 {
-                    if (Path.GetExtension(args[0]) != ".ascdraw")
-                    {
-                        Print("File extension is invalid! Must be .ascdraw!");
-                        StartupProgresser.Current.Notify(CommandName, 2);
-                        return;
-                    }
-                    _drawer.SetFile(Path.Combine(IStartup.Current.CurrentDirectory, args[0])).DrawArt();
+                    _drawer.SetFile(Path.Combine(IStartup.Current.CurrentDirectory, args[0]+".ascdraw")).DrawArt();
                 }
                 else
                 {
-                    _drawer.SetText(args[0].ToUpper()).DrawArt();
+                    var formatted = args[0].ToUpper();
+                    _drawer.SetText(formatted).DrawArt();
+                    if(args[2] != "_")
+                    {
+                        File.WriteAllText(Path.Combine(IStartup.Current.CurrentDirectory, args[2] + ".ascdraw"), formatted);
+                    }
                 }
                 StartupProgresser.Current.Notify(CommandName, 2);
             }

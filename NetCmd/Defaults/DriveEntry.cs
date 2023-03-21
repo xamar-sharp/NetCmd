@@ -12,6 +12,7 @@ namespace NetCmd.Defaults
         public int ParameterCount { get; } = 1;//drive name or _ (all)
         public string CommandName { get; } = "drive";
         public string HelpText { get; } = "it`s command for reading information about drives on your machine\nIt has 1 parameters:\n 1 - drive_name OR _ (all drives)";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Green;
         public void React(string[] args)
         {
             Print("About Drives:");

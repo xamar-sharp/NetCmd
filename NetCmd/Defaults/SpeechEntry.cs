@@ -13,6 +13,7 @@ namespace NetCmd.Defaults
         public string CommandName { get; } = "speech";
         public string HelpText { get; } = "Text to speech service.\n It has 1 parameters: \n 1 - Your custom text for speech";
         public int ParameterCount { get; } = 1;
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Magenta;
 #pragma warning disable CA1416
         private readonly SpeechSynthesizer _synthesizer = new SpeechSynthesizer();
         ~SpeechEntry()

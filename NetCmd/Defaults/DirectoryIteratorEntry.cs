@@ -12,6 +12,7 @@ namespace NetCmd.Defaults
         public int ParameterCount { get; } = 1;
         public string CommandName { get; } = ">";
         public string HelpText { get; } = "Command for changing current working directory!\nIt has 1 parameters:\n 1 - Full path of directory to iterate";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.White;
         public void React(string[] args)
         {
             if (Directory.Exists(args[0]))

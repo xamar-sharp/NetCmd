@@ -12,6 +12,7 @@ namespace NetCmd.Defaults
         public int ParameterCount { get; } = 0;
         public string CommandName { get; } = "state";
         public string HelpText { get; } = "It`s command for display current working task and her progress percentage!";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Gray;
         public StateEntry()
         {
             _progresser = StartupProgresser.Current;

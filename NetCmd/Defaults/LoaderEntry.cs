@@ -13,7 +13,8 @@ namespace NetCmd.Defaults
         private readonly IProgresser _progresser;
         public int ParameterCount { get; } = 2;
         public string CommandName { get; } = "load";
-        public string HelpText { get; } = "It`s command for loading simple web-file into your filesystem!\nIt has 2 parameters:\n1 - URI to file for load\n2 - Relative filesystem path (from current working directory) - loading location\n";
+        public string HelpText { get; } = "It`s command for loading simple web-file into your filesystem!\nIt has 2 parameters:\n1 - URI to file for load\n2 - Relative filesystem path (from current working directory) - loading location";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.DarkCyan;
         private static readonly WebClient _client = new WebClient();
         public LoaderEntry()
         {

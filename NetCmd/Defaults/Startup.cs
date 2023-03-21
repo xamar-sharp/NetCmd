@@ -116,7 +116,7 @@ namespace NetCmd.Defaults
                             {
                                 command.React(obj as string[]);
                             }
-                            catch (Exception ex)
+                            catch
                             {
                                 this.ReportError("Syntax error.");
                             }
@@ -128,7 +128,7 @@ namespace NetCmd.Defaults
                         Console.WriteLine();
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     ReportError("Syntax error.");
                 }

@@ -13,6 +13,7 @@ namespace NetCmd.Defaults
         public int ParameterCount { get; } = 1;
         public string CommandName { get; } = "exec";
         public string HelpText { get; } = "Execute any file if extension supports!\n It has 1 parameters:\n 1 - Filename with extension in current working directory to execute!";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Cyan;
         public void React(string[] args)
         {
             string execPath = Path.Combine(IStartup.Current.CurrentDirectory, args[0]);

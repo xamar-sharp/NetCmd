@@ -11,6 +11,7 @@ namespace NetCmd.Defaults
         public int ParameterCount { get; } = 1;
         public string CommandName { get; } = "help";
         public string HelpText { get; } = "Ohhh it`s COMMAND for ... COMMAND hints?";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Cyan;
         public void React(string[] args)
         {
             if (String.IsNullOrWhiteSpace(args[0]))
@@ -24,21 +25,22 @@ namespace NetCmd.Defaults
                 var entries = IStartup.Current.Builder.GetAllEntries();
                 foreach (IEntry entry in entries)
                 {
+                    Console.ForegroundColor = entry.HelpColor;
                     Print(entry.CommandName + ": " + entry.HelpText);
-                    Console.WriteLine();
+                    Console.ResetColor();
                 }
             }
             else
             {
                 var entry = IStartup.Current.Builder.GetEntry(args[0]);
+                Console.ForegroundColor = entry.HelpColor;
                 Print(entry.CommandName + ": " + entry.HelpText);
+                Console.ResetColor();
             }
         }
         public void Print(string msg)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(msg);
-            Console.ResetColor();
         }
     }
 }

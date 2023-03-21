@@ -14,6 +14,10 @@ namespace NetCmd.Defaults
             {
                 specialCode = specialCode[0..1];
             }
+            if (specialCode.StartsWith('#'))
+            {
+                return specialCode[1];
+            }
             switch (specialCode)
             {
                 case "BL":

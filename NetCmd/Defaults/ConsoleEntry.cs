@@ -12,6 +12,7 @@ namespace NetCmd.Defaults
         public string HelpText { get; } = "It configures console on your settings!\nIt has 3 parameters:\n" +
             " 1 - Text color\n 2 - Background color\n 3 - Title\n Optional parameters value is _";
         public int ParameterCount { get; } = 3;
+        public ConsoleColor HelpColor { get; } = ConsoleColor.DarkGray;
         public void React(string[] args)
         {
             if (args[0] != "_")

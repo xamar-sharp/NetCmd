@@ -13,6 +13,7 @@ namespace NetCmd.Defaults
         public int ParameterCount { get; } = 2;
         public string CommandName { get; } = "dns-request";
         public string HelpText { get; } = "dns-request is command for DNS recursive Requests!\n It has 2 parameters:\n 1 - domain to request, example: github.com \n 2 - count of records for catch, example: 2";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Green;
         public DnsEntry()
         {
             _progresser = StartupProgresser.Current;

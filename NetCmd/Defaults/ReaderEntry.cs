@@ -13,7 +13,8 @@ namespace NetCmd.Defaults
     {
         public int ParameterCount { get; } = 1;
         public string CommandName { get; } = "open";
-        public string HelpText { get; } = "Command for formatted reading of any file.\nIt has 1 parameter:\n1 - URI to file for load\n";
+        public string HelpText { get; } = "Command for formatted reading of any file.\nIt has 1 parameter:\n1 - URI to file for load";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Green;
         private readonly IProgresser _progresser;
         public ReaderEntry()
         {

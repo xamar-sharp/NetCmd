@@ -15,7 +15,8 @@ namespace NetCmd.Defaults
         public int ParameterCount { get; } = 5;
         public string HelpText { get; } = "http-request is command for HTTP/HTTPS Requests!\n It has 6 parameters:\n 1 - URI for request, example: https://github.com/xamar-sharp/ \n 2 - HTTP METHOD for request (GET, POST, PUT, DELETE, PATCH)"+
             "\n 3 - Timeout for connection to server in milliseconds, example: 3000"+ "\n 4 - Request headers separates by format: <key>=<value>;<key1>=<value1>...\nAuthorization header value format must be: <Bearer|other auth scheme...><whitespace><auth-data>!!!\nExample: Accept=application/json;Authorization=Bearer any-jwt-string"+
-            "\n 5 - Request body in JSON format, example: {\"account\":\"xamar-sharp\",\"tech\":true}"+ "\n 6 - Your proxy via (host:port), example: proxy.net:43300\nIf you don`t want have parameter in your request, you can enter _ in parameter value!!!\nOnly 3,4,5,6 parameters is optional!!!\n";
+            "\n 5 - Request body in JSON format, example: {\"account\":\"xamar-sharp\",\"tech\":true}"+ "\n 6 - Your proxy via (host:port), example: proxy.net:43300\nIf you don`t want have parameter in your request, you can enter _ in parameter value!!!\nOnly 3,4,5,6 parameters is optional!!!";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Magenta;
         private readonly IProgresser _progresser;
         public HttpEntry()
         {

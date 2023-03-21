@@ -12,6 +12,7 @@ namespace NetCmd.Defaults
         public int ParameterCount { get; } = 2;
         public string CommandName { get; } = "die";
         public string HelpText { get; } = "It`s command for NetCmd death *_*";
+        public ConsoleColor HelpColor { get; } = ConsoleColor.Red;
         public DeadEntry()
         {
         }
