@@ -13,7 +13,7 @@ namespace NetCmd.Defaults
         public string CommandName { get; } = "draw";
         public string HelpText { get; } = "Draw ASC-II art to console, based on special markup syntax.\nSyntax: {amount of repeating symbol}{special-symbol-code}.{etc...}\nSpecial symbol codes:\n" +
             "BL - black cell;B - blue cell;G - green cell;R - red cell;C - cyan cell;GR - gray cell\n" + "Y - yellow cell;W - white cell;M - magenta cell;D[B,C,M,G,A,R] - dark [blue,cyan,etc...] cell;\n"+
-            "NL - next line symbol; Another symbol or #[B,G,R,C,M,Y,W] will interprete as raw ASC-II symbol.\n"+
+            "NL - next line symbol; Another symbol or #[B,G,R,C,M,Y,W] will interprete as raw ASC-II symbol."+
             "\nIt has 2 parameters:\n 1 - text or relative file name(without extension!)(extension should be .ascdraw!) for draw-output\n 2 - F(if 1 parameter is file name), Other if text.\n 3 - If 1 parameter is text, this is file name to load picture into filesystem.\n File name without extension! Maybe _ if don`t used!";
         public int ParameterCount { get; } = 3;
         public ConsoleColor HelpColor { get; } = ConsoleColor.DarkCyan;
@@ -41,7 +41,7 @@ namespace NetCmd.Defaults
         }
         public void Print(string msg)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = HelpColor;
             Console.WriteLine(CommandName+":"+msg);
             Console.ResetColor();
         }

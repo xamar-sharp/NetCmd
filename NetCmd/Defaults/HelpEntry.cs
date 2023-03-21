@@ -10,7 +10,7 @@ namespace NetCmd.Defaults
     {
         public int ParameterCount { get; } = 1;
         public string CommandName { get; } = "help";
-        public string HelpText { get; } = "Ohhh it`s COMMAND for ... COMMAND hints?";
+        public string HelpText { get; } = "Ohhh it`s COMMAND for ... COMMAND hints?\nIt has 1 parameter:\n 1 - 'all' or {command-name}";
         public ConsoleColor HelpColor { get; } = ConsoleColor.Cyan;
         public void React(string[] args)
         {

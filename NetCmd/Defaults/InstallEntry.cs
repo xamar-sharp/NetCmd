@@ -72,7 +72,7 @@ namespace NetCmd.Defaults
         }
         public void Print(string msg)
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = HelpColor;
             Console.WriteLine(msg);
             Console.ResetColor();
         }
